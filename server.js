@@ -12,6 +12,7 @@ const app = express();
 app.use(express.json());
 
 //routes
+app.use(express.static('build'));
 app.use('/api/tasks', taskRoutes);
 app.use('/api/user', userRoutes);
 
@@ -19,7 +20,7 @@ mongoose.connect(process.env.MONGO_URI)
     .then(()=>{
         //listen for requests
         app.listen(process.env.PORT,()=>{
-            console.log('connected to the db & server listening on port: 4000');
+            console.log('connected to the db & server listening...');
         })
     })
     .catch((error) => {
